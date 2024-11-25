@@ -1090,6 +1090,37 @@ export default function SendUsdt({ params }: any) {
 
             </div>
 
+            {/* my wallet address  and copy button */}
+            {address && (
+            <div className="w-full flex flex-col gap-2 items-start">
+                
+                <div className="flex flex-row items-start gap-3">
+                  
+                  <div className="flex flex-col gap-2 items-start">
+                    
+                    <div className='flex flex-row items-center gap-2'>
+                      {/* dot icon */}
+                      <div className="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                      <div className="text-sm">{My_Wallet_Address}</div>
+                    </div>
+  
+                    <div className="flex flex-row items-center gap-2">
+                      <button
+                        className="text-sm text-zinc-400 underline"
+                        onClick={() => {
+                          navigator.clipboard.writeText(address);
+                          toast.success('Copied wallet address');
+                        } }
+                      >
+                        {address.substring(0, 6)}...{address.substring(address.length - 4)}
+                      </button>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+            )}
+
 
             <div className='w-full  flex flex-col gap-5 border
               bg-yellow-500 border-yellow-500 text-white
@@ -1493,7 +1524,7 @@ function Header(
         <button
           onClick={() => {
             router.push(
-              "/" + lang + "/" + chain
+              "/" + lang + "/" + chain + "/buy-trump"
             );
           }}
         >
@@ -1506,7 +1537,7 @@ function Header(
               className="rounded-full w-10 h-10 xl:w-14 xl:h-14"
             />
             <span className="text-lg xl:text-3xl text-zinc-100 font-semibold">
-              TRUMP Wallet
+              TRUMP 구매하기
             </span>
           </div>
         </button>
