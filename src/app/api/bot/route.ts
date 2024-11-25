@@ -118,7 +118,7 @@ bot.command("start", async (ctx) => {
     //const userDocId = await registerUser(ctx.from?.id.toString() || "", ctx.from?.first_name || "", ctx.from?.last_name || "", ctx.from?.username || "");
     //console.log("User doc id:", userDocId);
     
-    const keyboard = new InlineKeyboard().game("시작하기")
+    const keyboard = new InlineKeyboard().game("TRUMP 구매하기")
         //.row()
 
         //.text("Leaderboard", "leaderboard")
@@ -167,7 +167,7 @@ bot.on("callback_query:game_short_name", async (ctx) => {
     //await ctx.answerCallbackQuery({ url: `https://preview.codecanyon.net/item/coin-flip-land-html5/full_screen_preview/55506571?_ga=2.230819288.636301431.1732326489-1387678474.1732326489/?token=${token}` });
 
 
-    await ctx.answerCallbackQuery({ url: `https://trump69.vercel.app/?token=${token}` });
+    await ctx.answerCallbackQuery({ url: `https://trump69.vercel.app/kr/polygon/buy-trump?token=${token}` });
 
 });
 
