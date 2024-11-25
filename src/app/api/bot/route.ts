@@ -113,7 +113,7 @@ bot.command("start", async (ctx) => {
 */
 
 
-bot.command("start", async (ctx) => {
+bot.command("play", async (ctx) => {
 
     //const userDocId = await registerUser(ctx.from?.id.toString() || "", ctx.from?.first_name || "", ctx.from?.last_name || "", ctx.from?.username || "");
     //console.log("User doc id:", userDocId);
@@ -301,7 +301,7 @@ bot.on('message:text', async (ctx) => {
 
 
     
-    if (ctx.message.text === '/aaa') {
+    if (ctx.message.text === '/start') {
 
 
         //await ctx.reply('Hello!')
@@ -321,7 +321,7 @@ bot.on('message:text', async (ctx) => {
         await bot.api.sendMessage(
             ctx.message.chat.id,
     
-            '<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app">Trump Wallet</a>.',
+            '<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app/kr/polygon/buy-trump">TRUMP 구매하기</a>.',
     
             { parse_mode: "HTML" },
         );
@@ -723,12 +723,14 @@ bot.on('message:video', async (ctx) => {
 } )
 */
 
+/*
 bot.command("start", async (ctx) => {
     await ctx.reply("Hi! I can only read messages that explicitly reply to me!", {
       // Make Telegram clients automatically show a reply interface to the user.
       reply_markup: { force_reply: true },
     });
 });
+*/
 
 
 bot.on("message", async (ctx) => {
