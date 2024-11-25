@@ -943,6 +943,7 @@ export default function Index({ params }: any) {
 
           <div className="flex flex-col items-start justify-center space-y-4">
 
+              {/*
               <div className='flex flex-row items-center space-x-4'>
                   <Image
                     src="/logo-trump.webp"
@@ -965,6 +966,7 @@ export default function Index({ params }: any) {
                   <div className="text-2xl font-semibold">{Buy_TRUMP}</div>
 
               </div>
+              */}
 
 
                 <div className="w-full flex flex-row items-start justify-between gap-2">
@@ -2674,7 +2676,7 @@ const TradeDetail = (
                 className="rounded-full w-10 h-10 xl:w-14 xl:h-14"
               />
               <span className="text-lg xl:text-3xl text-zinc-100 font-semibold">
-                TRUMP Wallet
+                TRUMP 구매하기
               </span>
             </div>
           </button>
