@@ -445,7 +445,7 @@ export default function Index({ params }: any) {
 
     setMakeingEscrowWallet(true);
 
-    fetch('/api/orderNovart/getEscrowWalletAddress', {
+    fetch('/api/orderTrump/getEscrowWalletAddress', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -586,7 +586,7 @@ export default function Index({ params }: any) {
     useEffect(() => {
 
         /*
-        fetch('/api/orderNovart/getAllSellOrdersForBuyer', {
+        fetch('/api/orderTrump/getAllSellOrdersForBuyer', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -608,7 +608,7 @@ export default function Index({ params }: any) {
         const fetchSellOrders = async () => {
 
 
-            const response = await fetch('/api/orderNovart/getAllSellOrdersForBuyer', {
+            const response = await fetch('/api/orderTrump/getAllSellOrdersForBuyer', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -719,7 +719,7 @@ export default function Index({ params }: any) {
         );
 
 
-        fetch('/api/orderNovart/acceptSellOrder', {
+        fetch('/api/orderTrump/acceptSellOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -749,7 +749,7 @@ export default function Index({ params }: any) {
 
 
 
-            fetch('/api/orderNovart/getAllSellOrdersForBuyer', {
+            fetch('/api/orderTrump/getAllSellOrdersForBuyer', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -812,7 +812,7 @@ export default function Index({ params }: any) {
 
       setCancellings(cancellings.map((item, i) => i === index ? true : item));
 
-      const response = await fetch('/api/orderNovart/cancelTradeByBuyer', {
+      const response = await fetch('/api/orderTrump/cancelTradeByBuyer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -830,7 +830,7 @@ export default function Index({ params }: any) {
       if (data.result) {
         toast.success(Order_has_been_cancelled);
 
-        await fetch('/api/orderNovart/getAllSellOrdersForBuyer', {
+        await fetch('/api/orderTrump/getAllSellOrdersForBuyer', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -1111,7 +1111,7 @@ export default function Index({ params }: any) {
                     <button
                       className="text-sm bg-zinc-800 px-2 py-1 rounded-md text-white hover:bg-zinc-700"
                       onClick={() => {
-                        fetch('/api/orderNovart/getAllSellOrdersForBuyer', {
+                        fetch('/api/orderTrump/getAllSellOrdersForBuyer', {
                           method: 'POST',
                           headers: {
                             'Content-Type': 'application/json',

@@ -483,7 +483,7 @@ export default function Index({ params }: any) {
 
         const fetchData = async () => {
 
-            const response = await fetch("/api/orderNovart/getPrice", {
+            const response = await fetch("/api/orderTrump/getPrice", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -624,7 +624,7 @@ export default function Index({ params }: any) {
   
       setMakeingEscrowWallet(true);
   
-      fetch('/api/orderNovart/getEscrowWalletAddress', {
+      fetch('/api/orderTrump/getEscrowWalletAddress', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -861,7 +861,7 @@ export default function Index({ params }: any) {
       setLoadingFetchSellOrders(true);
 
       // api call
-      const response = await fetch('/api/orderNovart/getAllSellOrders', {
+      const response = await fetch('/api/orderTrump/getAllSellOrders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -997,14 +997,14 @@ export default function Index({ params }: any) {
       setSellOrdering(true);
 
 
-      let orderNovartAmount = trumpAmount;
+      let orderTrumpAmount = trumpAmount;
 
       if (checkInputKrwAmount) {
-        orderNovartAmount = parseFloat(Number(fietAmount / rate).toFixed(2));
+        orderTrumpAmount = parseFloat(Number(fietAmount / rate).toFixed(2));
       }
       
 
-      const response = await fetch('/api/orderNovart/setSellOrder', {
+      const response = await fetch('/api/orderTrump/setSellOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -1013,7 +1013,7 @@ export default function Index({ params }: any) {
           lang: params.lang,
           chain: params.chain,
           walletAddress: address,
-          trumpAmount: orderNovartAmount,
+          trumpAmount: orderTrumpAmount,
           fietAmount: fietAmount,
           fietCurrency: fietCurrency,
 
@@ -1062,7 +1062,7 @@ export default function Index({ params }: any) {
      
 
 
-        await fetch('/api/orderNovart/getAllSellOrders', {
+        await fetch('/api/orderTrump/getAllSellOrders', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -1109,7 +1109,7 @@ export default function Index({ params }: any) {
 
       setCancellings(cancellings.map((item, i) => i === index ? true : item));
 
-      const response = await fetch('/api/orderNovart/cancelSellOrder', {
+      const response = await fetch('/api/orderTrump/cancelSellOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -1238,7 +1238,7 @@ export default function Index({ params }: any) {
             requestingPayment.map((item, idx) => idx === index ? true : item)
           );
         
-          const response = await fetch('/api/orderNovart/requestPayment', {
+          const response = await fetch('/api/orderTrump/requestPayment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -1253,7 +1253,7 @@ export default function Index({ params }: any) {
 
           const data = await response.json();
 
-          ///console.log('/api/orderNovart/requestPayment data====', data);
+          ///console.log('/api/orderTrump/requestPayment data====', data);
 
 
           /*
@@ -1375,7 +1375,7 @@ export default function Index({ params }: any) {
 
 
 
-    const response = await fetch('/api/orderNovart/confirmPayment', {
+    const response = await fetch('/api/orderTrump/confirmPayment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -1458,7 +1458,7 @@ export default function Index({ params }: any) {
     );
 
 
-    const response = await fetch('/api/orderNovart/sellOrderRollbackPayment', {
+    const response = await fetch('/api/orderTrump/sellOrderRollbackPayment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -1527,7 +1527,7 @@ export default function Index({ params }: any) {
       setLoadingFetchSellOrders(true);
 
       // api call
-      const response = await fetch('/api/orderNovart/getAllSellOrders', {
+      const response = await fetch('/api/orderTrump/getAllSellOrders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -1617,7 +1617,7 @@ export default function Index({ params }: any) {
   
       const fetchStoreCode = async () => {
   
-        const response = await fetch('/api/orderNovart/getStoreCodeNumber', {
+        const response = await fetch('/api/orderTrump/getStoreCodeNumber', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
