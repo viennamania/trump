@@ -978,6 +978,7 @@ export default function Index({ params }: any) {
                   <div className="flex flex-row items-start gap-3">
                     
                     <div className="flex flex-col gap-2 items-start">
+                      
                       <div className="text-sm">{My_Balance}</div>
                       <div className="flex flex-row items-end justify-center  gap-2">
                         <span className="text-4xl font-semibold text-gray-800">
@@ -985,7 +986,21 @@ export default function Index({ params }: any) {
                         </span>
                         <span className="text-lg">TRUMP</span>
                       </div>
+
                     </div>
+
+                    {/* goto send TRUMP */}
+                    {address && (
+                      <button
+                        onClick={() => {
+                          router.push('/' + params.lang + '/' + params.chain + '/send-trump');
+                        }}
+                        className="text-sm bg-zinc-800 px-2 py-1 rounded-md text-white hover:bg-zinc-700"
+                      >
+                        TRUMP 보내기
+                      </button>
+                    )}
+
 
                     {!address && (
 
