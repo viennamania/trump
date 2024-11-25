@@ -30,6 +30,11 @@ import {
 
 import { inAppWallet } from "thirdweb/wallets";
 
+import {
+  getProfiles,
+} from "thirdweb/wallets/in-app";
+
+
 
 import { getUserPhoneNumber } from "thirdweb/wallets/in-app";
 
@@ -115,7 +120,7 @@ interface SellOrder {
 const wallets = [
   inAppWallet({
     auth: {
-      options: ["phone"],
+      options: ["telegram"],
     },
   }),
 ];
@@ -1739,7 +1744,7 @@ export default function Index({ params }: any) {
                       }}
                       theme={"light"}
                       connectButton={{
-                        label: Sign_in_with_Wallet,
+                        label: "텔레그램 로그인",
                       }}
                       connectModal={{
                         size: "wide", 
