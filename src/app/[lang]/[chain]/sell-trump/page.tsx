@@ -313,6 +313,10 @@ export default function Index({ params }: any) {
 
     Payment_has_been_rollbacked: "",
 
+    Are_you_sure_you_want_to_disconnect_your_wallet: "",
+
+    Disconnect_Wallet: "",
+
 
 
   } );
@@ -458,6 +462,11 @@ export default function Index({ params }: any) {
 
     Payment_has_been_rollbacked,
 
+    Are_you_sure_you_want_to_disconnect_your_wallet,
+
+    Disconnect_Wallet,
+
+
   } = data;
 
 
@@ -476,6 +485,9 @@ export default function Index({ params }: any) {
 
 
     const [rate, setRate] = useState(0);
+
+
+    const activeWallet = useActiveWallet();
 
 
 
@@ -1763,6 +1775,31 @@ export default function Index({ params }: any) {
                       }
                       />
 
+                    )}
+
+                    {/* disconnect button */}
+                    {address && (
+                      <div className="w-full flex flex-col items-start justify-center gap-5">
+                        {/* disconnect button */}
+                        
+                        <button
+                          onClick={() => {
+
+                            confirm(Are_you_sure_you_want_to_disconnect_your_wallet) && 
+                            activeWallet?.disconnect();
+
+                            window.location.reload();
+
+                          }}
+                          className="text-lg bg-red-500 text-white px-4 py-2 rounded-lg
+                            hover:bg-red-600
+                            transition duration-300 ease-in-out
+                            transform hover:-translate-y-1
+                          "
+                        >
+                          {Disconnect_Wallet}
+                        </button>
+                      </div>
                     )}
 
 
