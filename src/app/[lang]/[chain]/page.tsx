@@ -447,7 +447,7 @@ export default function Index({ params }: any) {
 
 
   // TRUMP balance
-  const [novartBalance, setNovartBalance] = useState(0);
+  const [trumpBalance, setNovartBalance] = useState(0);
   useEffect(() => {
       
       if (!address) return;
@@ -1598,7 +1598,7 @@ export default function Index({ params }: any) {
                 />
 
                 <div className="text-4xl font-semibold text-zinc-100">
-                  {Number(novartBalance).toFixed(2)}
+                  {Number(trumpBalance).toFixed(2)}
                 </div>
                 <p className="w-12 text-sm text-zinc-100">
                   TRUMP

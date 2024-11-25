@@ -47,7 +47,7 @@ export interface UserProps {
 
   tradeId: string,
 
-  novartAmount: number,
+  trumpAmount: number,
   fietAmount: number,
   fietCurrency: string,
   rate: number,
@@ -166,10 +166,10 @@ export async function insertSellOrder(data: any) {
 
   console.log('insertSellOrder data: ' + JSON.stringify(data));
   /*
-  {"walletAddress":"0xc6F48f56C5Da5c674746C298A460A2E1427d0998","novartAmount":10,"fietAmount":15,"fietCurrency":"USD","rate":1.5,"payment":{"method":"Bank"},"privateSale":false}
+  {"walletAddress":"0xc6F48f56C5Da5c674746C298A460A2E1427d0998","trumpAmount":10,"fietAmount":15,"fietCurrency":"USD","rate":1.5,"payment":{"method":"Bank"},"privateSale":false}
   */
 
-  if (!data.walletAddress || !data.novartAmount || !data.fietAmount || !data.fietCurrency || !data.rate || !data.payment) {
+  if (!data.walletAddress || !data.trumpAmount || !data.fietAmount || !data.fietCurrency || !data.rate || !data.payment) {
     return null;
   }
 
@@ -209,7 +209,7 @@ export async function insertSellOrder(data: any) {
 
 
 
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
  
   const result = await collection.insertOne(
@@ -222,7 +222,7 @@ export async function insertSellOrder(data: any) {
       mobile: mobile,
       avatar: avatar,
       seller: seller,
-      novartAmount: data.novartAmount,
+      trumpAmount: data.trumpAmount,
       fietAmount: data.fietAmount,
       fietCurrency: data.fietCurrency,
       rate: data.rate,
@@ -251,7 +251,7 @@ export async function insertSellOrder(data: any) {
 export async function getOrderById(orderId: string): Promise<UserProps | null> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
   const result = await collection.findOne<UserProps>(
     { _id: new ObjectId(orderId) }
@@ -271,7 +271,7 @@ export async function getOrderById(orderId: string): Promise<UserProps | null> {
 export async function getOpenOrdersCount(): Promise<number> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
   const result = await collection.countDocuments(
     { status: 'ordered', createdAt: { $gt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() } }
@@ -305,7 +305,7 @@ export async function getSellOrders(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   // status is not 'paymentConfirmed'
@@ -383,7 +383,7 @@ export async function getOneSellOrder(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   // status is not 'paymentConfirmed'
@@ -445,7 +445,7 @@ export async function deleteSellOrder(
 ): Promise<boolean> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
   // check orderId is valid ObjectId
   if (!ObjectId.isValid(orderId)) {
@@ -490,7 +490,7 @@ export async function cancelTradeByBuyer(
 ) {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
   // check orderId is valid ObjectId
   if (!ObjectId.isValid(orderId)) {
@@ -541,7 +541,7 @@ export async function cancelTradeByBuyer(
 export async function cancelTradeByAdmin() {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
   // status is 'accepted'
   // acceptedAt is more than 1 hour ago
@@ -584,7 +584,7 @@ export async function getSellOrdersForBuyer(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   // status is not 'paymentConfirmed'
@@ -660,7 +660,7 @@ export async function getSellOrdersByWalletAddress(
 ): Promise<ResultProps> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   const results = await collection.find<UserProps>(
@@ -701,7 +701,7 @@ export async function acceptSellOrder(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
   // random number for tradeId
   // 100000 ~ 999999 string
@@ -829,7 +829,7 @@ export async function requestPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   const result = await collection.updateOne(
@@ -876,7 +876,7 @@ export async function confirmPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   const result = await collection.updateOne(
@@ -928,7 +928,7 @@ export async function getTradesByWalletAddress(
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -975,7 +975,7 @@ export async function getTradesByWalletAddressProcessing(
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -1024,7 +1024,7 @@ export async function getSellTradesByWalletAddress(
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -1067,7 +1067,7 @@ export async function getSellTradesByWalletAddressProcessing(
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   // get orders by buyer.walletAddress = walletAddress 
@@ -1094,7 +1094,7 @@ export async function getSellTradesByWalletAddressProcessing(
 
 
 // get paymentRequested trades by wallet address
-// and sum of novartAmount
+// and sum of trumpAmount
 export async function getPaymentRequestedUsdtAmountByWalletAddress(
 
   {
@@ -1107,7 +1107,7 @@ export async function getPaymentRequestedUsdtAmountByWalletAddress(
 ): Promise<any> {
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
   const results = await collection.aggregate([
     {
@@ -1119,7 +1119,7 @@ export async function getPaymentRequestedUsdtAmountByWalletAddress(
     {
       $group: {
         _id: null,
-        totalUsdtAmount: { $sum: '$novartAmount' },
+        totalUsdtAmount: { $sum: '$trumpAmount' },
       }
     }
   ]).toArray();
@@ -1216,7 +1216,7 @@ export async function sellOrderRollbackPayment(data: any) {
 
 
   const client = await clientPromise;
-  const collection = client.db('trump').collection('novartOrders');
+  const collection = client.db('trump').collection('trumpOrders');
 
 
   const result = await collection.updateOne(
@@ -1262,7 +1262,7 @@ export async function insertBuyOrder(data: any) {
   console.log('insertBuyOrder data: ' + JSON.stringify(data));
 
 
-  if (!data.walletAddress || !data.novartAmount || !data.krwAmount || !data.rate) {
+  if (!data.walletAddress || !data.trumpAmount || !data.krwAmount || !data.rate) {
     return null;
   }
 
@@ -1321,7 +1321,7 @@ export async function insertBuyOrder(data: any) {
       
       //seller: seller,
 
-      novartAmount: data.novartAmount,
+      trumpAmount: data.trumpAmount,
       krwAmount: data.krwAmount,
       rate: data.rate,
       createdAt: new Date().toISOString(),

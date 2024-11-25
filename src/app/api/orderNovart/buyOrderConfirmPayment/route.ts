@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
     const {
       seller: seller,
       walletAddress: walletAddress,
-      novartAmount: novartAmount,
+      trumpAmount: trumpAmount,
       buyer: buyer,
     } = order as UserProps;
 
@@ -177,7 +177,7 @@ export async function POST(request: NextRequest) {
 
     //console.log("toAddressStore", toAddressStore);
 
-    const sendAmountToStore = novartAmount;
+    const sendAmountToStore = trumpAmount;
 
     //console.log("sendAmountToStore", sendAmountToStore);
 
@@ -435,7 +435,7 @@ export async function POST(request: NextRequest) {
   
   
   
-    const amount = novartAmount;
+    const amount = trumpAmount;
   
   
       // send sms

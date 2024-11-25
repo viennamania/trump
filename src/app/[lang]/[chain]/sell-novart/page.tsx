@@ -80,7 +80,7 @@ interface SellOrder {
   limit: string;
   paymentMethods: string[];
 
-  novartAmount: number;
+  trumpAmount: number;
   fietAmount: number;
   fietCurrency: string;
   rate: number;
@@ -906,20 +906,20 @@ export default function Index({ params }: any) {
     }
 
 
-    const [novartAmount, setNovartAmount] = useState(0);
+    const [trumpAmount, setNovartAmount] = useState(0);
 
     const [defaultKrWAmount, setDefaultKrwAmount] = useState(0);
 
     const [fietAmount, setFietAmount] = useState(0);
 
-    //console.log('novartAmount', novartAmount);
+    //console.log('trumpAmount', trumpAmount);
 
 
  
 
     useEffect(() => {
 
-      if (novartAmount === 0) {
+      if (trumpAmount === 0) {
 
         setDefaultKrwAmount(0);
 
@@ -929,12 +929,12 @@ export default function Index({ params }: any) {
       }
     
         
-      setDefaultKrwAmount( Math.round(novartAmount * rate) );
+      setDefaultKrwAmount( Math.round(trumpAmount * rate) );
 
 
-      setFietAmount( Math.round(novartAmount * rate) );
+      setFietAmount( Math.round(trumpAmount * rate) );
 
-    } , [novartAmount, rate]);
+    } , [trumpAmount, rate]);
 
 
 
@@ -997,7 +997,7 @@ export default function Index({ params }: any) {
       setSellOrdering(true);
 
 
-      let orderNovartAmount = novartAmount;
+      let orderNovartAmount = trumpAmount;
 
       if (checkInputKrwAmount) {
         orderNovartAmount = parseFloat(Number(fietAmount / rate).toFixed(2));
@@ -1013,7 +1013,7 @@ export default function Index({ params }: any) {
           lang: params.lang,
           chain: params.chain,
           walletAddress: address,
-          novartAmount: orderNovartAmount,
+          trumpAmount: orderNovartAmount,
           fietAmount: fietAmount,
           fietCurrency: fietCurrency,
 
@@ -2161,7 +2161,7 @@ export default function Index({ params }: any) {
                                 type="number"
                                 className=" w-28 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 "
                                 placeholder="Amount"
-                                value={novartAmount}
+                                value={trumpAmount}
                                 onChange={(e) => {
                                   // check number
                                   e.target.value = e.target.value.replace(/[^0-9.]/g, '');
@@ -2191,22 +2191,22 @@ export default function Index({ params }: any) {
                               = {
 
                                 fietCurrency === 'USD' ? (
-                                  Number(novartAmount * rate).toLocaleString('en-US', {
+                                  Number(trumpAmount * rate).toLocaleString('en-US', {
                                     style: 'currency',
                                     currency: 'USD'
                                   })
                                 ) : fietCurrency === 'JPY' ? (
-                                  Number(novartAmount * rate).toLocaleString('ja-JP', {
+                                  Number(trumpAmount * rate).toLocaleString('ja-JP', {
                                     style: 'currency',
                                     currency: 'JPY'
                                   })
                                 ) : fietCurrency === 'CNY' ? (
-                                  Number(novartAmount * rate).toLocaleString('zh-CN', {
+                                  Number(trumpAmount * rate).toLocaleString('zh-CN', {
                                     style: 'currency',
                                     currency: 'CNY'
                                   })
                                 ) : (
-                                  Number(novartAmount * rate).toLocaleString('ko-KR', {
+                                  Number(trumpAmount * rate).toLocaleString('ko-KR', {
                                     style: 'currency',
                                     currency: 'KRW'
                                   })
@@ -2245,7 +2245,7 @@ export default function Index({ params }: any) {
                             <div className="flex flex-col gap-2">
 
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-red-400 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   fietAmount > 0 && setFietAmount(fietAmount - 1);
@@ -2255,7 +2255,7 @@ export default function Index({ params }: any) {
                               </button>
 
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-red-600 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   fietAmount > 10 && setFietAmount(fietAmount - 10);
@@ -2265,7 +2265,7 @@ export default function Index({ params }: any) {
                               </button>
 
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-red-800 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   fietAmount > 100 && setFietAmount(fietAmount - 100);
@@ -2275,7 +2275,7 @@ export default function Index({ params }: any) {
                               </button>
 
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-red-900 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   fietAmount > 1000 && setFietAmount(fietAmount - 1000);
@@ -2317,29 +2317,29 @@ export default function Index({ params }: any) {
 
                                     // currency format
                                     /*
-                                    Number((fietAmount / novartAmount).toFixed(2)).toLocaleString('ko-KR', {
+                                    Number((fietAmount / trumpAmount).toFixed(2)).toLocaleString('ko-KR', {
                                       style: 'currency',
                                       currency: 'KRW'
                                     })
                                     */
 
                                     fietCurrency === 'USD' ? (
-                                      Number(fietAmount / novartAmount).toLocaleString('en-US', {
+                                      Number(fietAmount / trumpAmount).toLocaleString('en-US', {
                                         style: 'currency',
                                         currency: 'USD'
                                       })
                                     ) : fietCurrency === 'JPY' ? (
-                                      Number(fietAmount / novartAmount).toLocaleString('ja-JP', {
+                                      Number(fietAmount / trumpAmount).toLocaleString('ja-JP', {
                                         style: 'currency',
                                         currency: 'JPY'
                                       })
                                     ) : fietCurrency === 'CNY' ? (
-                                      Number(fietAmount / novartAmount).toLocaleString('zh-CN', {
+                                      Number(fietAmount / trumpAmount).toLocaleString('zh-CN', {
                                         style: 'currency',
                                         currency: 'CNY'
                                       })
                                     ) : (
-                                      Number(fietAmount / novartAmount).toLocaleString('ko-KR', {
+                                      Number(fietAmount / trumpAmount).toLocaleString('ko-KR', {
                                         style: 'currency',
                                         currency: 'KRW'
                                       })
@@ -2352,7 +2352,7 @@ export default function Index({ params }: any) {
 
                             <div className="flex flex-col gap-2">
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-green-400 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   setFietAmount(fietAmount + 1);
@@ -2361,7 +2361,7 @@ export default function Index({ params }: any) {
                                 +1
                               </button>
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-green-600 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   setFietAmount(fietAmount + 10);
@@ -2371,7 +2371,7 @@ export default function Index({ params }: any) {
                               </button>
 
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-green-800 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   setFietAmount(fietAmount + 100);
@@ -2381,7 +2381,7 @@ export default function Index({ params }: any) {
                               </button>
 
                               <button
-                                disabled={novartAmount === 0}
+                                disabled={trumpAmount === 0}
                                 className="bg-green-900 text-white px-2 py-2 rounded-md"
                                 onClick={() => {
                                   setFietAmount(fietAmount + 1000);
@@ -2428,7 +2428,7 @@ export default function Index({ params }: any) {
 
                         <div className="mt-4 flex flex-row items-center gap-2">
                           <input
-                            disabled={!address || novartAmount === 0 || sellOrdering}
+                            disabled={!address || trumpAmount === 0 || sellOrdering}
                             type="checkbox"
                             checked={agreementPlaceOrder}
                             onChange={(e) => setAgreementPlaceOrder(e.target.checked)}
@@ -2531,8 +2531,8 @@ export default function Index({ params }: any) {
                               
 
                               <button
-                                  disabled={!isSeller || !paymentMethod || novartAmount === 0 || agreementPlaceOrder === false}
-                                  className={`text-lg text-white px-4 py-2 rounded-md ${!isSeller || !paymentMethod || novartAmount === 0 || agreementPlaceOrder === false ? 'bg-gray-500' : 'bg-green-500'}`}
+                                  disabled={!isSeller || !paymentMethod || trumpAmount === 0 || agreementPlaceOrder === false}
+                                  className={`text-lg text-white px-4 py-2 rounded-md ${!isSeller || !paymentMethod || trumpAmount === 0 || agreementPlaceOrder === false ? 'bg-gray-500' : 'bg-green-500'}`}
                                   onClick={() => {
                                       console.log('Sell TRUMP');
                                       // open trade detail
@@ -2988,7 +2988,7 @@ export default function Index({ params }: any) {
 
 
                                   </span>
-                                  <span className="text-sm">{item.novartAmount}{' '}TRUMP</span>
+                                  <span className="text-sm">{item.trumpAmount}{' '}TRUMP</span>
                                   <span className="text-xs">
                                     {Number(item.rate).toFixed(2)}
                                   </span>
@@ -3174,7 +3174,7 @@ export default function Index({ params }: any) {
                                           index,
                                           item._id,
                                           item.tradeId,
-                                          item.novartAmount
+                                          item.trumpAmount
                                         );
                                       }}
                                     >
@@ -3605,11 +3605,11 @@ export default function Index({ params }: any) {
 
                               <div className="flex flex-row items-start gap-2">
 
-                                <p className="text-lg font-semibold text-white">{item.novartAmount} TRUMP</p>
+                                <p className="text-lg font-semibold text-white">{item.trumpAmount} TRUMP</p>
 
                                 <p className="text-lg font-semibold text-white">{Rate}: {
 
-                                  Number(item.fietAmount / item.novartAmount).toFixed(2)
+                                  Number(item.fietAmount / item.trumpAmount).toFixed(2)
 
                                 }</p>
 
@@ -3888,7 +3888,7 @@ export default function Index({ params }: any) {
                                   <div className="flex flex-col gap-2 items-start">
                                     <span>
                                       {Waiting_for_seller_to_deposit}
-                                      {item.novartAmount} TRUMP
+                                      {item.trumpAmount} TRUMP
                                       {to_escrow}....
                                     </span>
 
@@ -3925,7 +3925,7 @@ export default function Index({ params }: any) {
                                       width={32}
                                       height={32}
                                     />
-                                    <div>{Escrow}: {item.novartAmount} TRUMP</div>
+                                    <div>{Escrow}: {item.trumpAmount} TRUMP</div>
                                     <button
                                       className="bg-white text-black px-2 py-2 rounded-md"
                                       onClick={() => {
@@ -4011,7 +4011,7 @@ export default function Index({ params }: any) {
                                           index,
                                           item._id,
                                           item.tradeId,
-                                          item.novartAmount
+                                          item.trumpAmount
                                         );
                                       }}
                                     >

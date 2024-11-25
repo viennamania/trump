@@ -75,7 +75,7 @@ interface SellOrder {
 
   paymentMethods: string[];
 
-  novartAmount: number;
+  trumpAmount: number;
   fietAmount: number;
   fietCurrency: string;
   rate: number;
@@ -1258,13 +1258,13 @@ export default function Index({ params }: any) {
                                 }
                               </div>
                               <div className="text-sm font-semibold text-white">
-                              {Rate}{' '}{Number(item.fietAmount / item.novartAmount).toFixed(2)}
+                              {Rate}{' '}{Number(item.fietAmount / item.trumpAmount).toFixed(2)}
                               </div>
                             </td>
 
                             <td className="p-2">
                               <div className="text-sm font-semibold text-white">
-                                {item.novartAmount} TRUMP
+                                {item.trumpAmount} TRUMP
                               </div>
                             </td>
 
@@ -1849,11 +1849,11 @@ export default function Index({ params }: any) {
                                 <div className="mt-2 flex flex-row items-start gap-2">
 
                                   <p className="text-xl font-semibold text-green-500">
-                                    {item.novartAmount}{' '}TRUMP
+                                    {item.trumpAmount}{' '}TRUMP
                                   </p>
                                   <p className="text-lg font-semibold text-gray-800">{Rate}: {
 
-                                    Number(item.fietAmount / item.novartAmount).toFixed(2)
+                                    Number(item.fietAmount / item.trumpAmount).toFixed(2)
 
                                     }</p>
                                 </div>
@@ -2072,7 +2072,7 @@ export default function Index({ params }: any) {
 
                                     <div className="flex flex-col gap-2 items-start">
                                       <span>
-                                        {Waiting_for_seller_to_deposit} {item.novartAmount} TRUMP {to_escrow}...
+                                        {Waiting_for_seller_to_deposit} {item.trumpAmount} TRUMP {to_escrow}...
                                       </span>
 
                                       {/*
@@ -2192,7 +2192,7 @@ export default function Index({ params }: any) {
                                         width={32}
                                         height={32}
                                       />
-                                      <div>{Escrow}: {item.novartAmount} TRUMP</div>
+                                      <div>{Escrow}: {item.trumpAmount} TRUMP</div>
                                       <button
                                         className="bg-white text-black px-2 py-2 rounded-md"
                                         onClick={() => {
@@ -2381,7 +2381,7 @@ export default function Index({ params }: any) {
 
                                               }}
                                             >
-                                              {Buy} {item.novartAmount} TRUMP
+                                              {Buy} {item.trumpAmount} TRUMP
                                             </button>
 
 
