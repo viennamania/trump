@@ -330,6 +330,36 @@ bot.on('message:text', async (ctx) => {
         return
 
 
+    
+    } else if (ctx.message.text === '/seller') {
+
+
+            //await ctx.reply('Hello!')
+    
+            // image
+            // url: https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/RiMb8wi-jNIcD6NZIkNZDiCTEwU5C5SIZHFpAu.png
+    
+    
+            // https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/mZDMLhJ-7L5OvMoRbJ5PG0vXF3BuywMffvxGT2.png
+            const photo = 'https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/mZDMLhJ-7L5OvMoRbJ5PG0vXF3BuywMffvxGT2.png'
+    
+            await ctx.replyWithPhoto(photo, {
+                caption: 'Welcome to Trump Wallet!'
+            })
+    
+    
+            await bot.api.sendMessage(
+                ctx.message.chat.id,
+        
+                '<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app/kr/polygon/sell-trump">TRUMP 판매하기</a>.',
+        
+                { parse_mode: "HTML" },
+            );
+    
+    
+            return
+
+
     }  else if (ctx.message.text === '/tbot') {
 
 
