@@ -1231,7 +1231,7 @@ export default function Index({ params }: any) {
 
                       // redirect to sell trades page
                       router.push(
-                        "/" + params.lang + "/" + params.chain + "/sell-novart"
+                        "/" + params.lang + "/" + params.chain + "/sell-trump"
                       );
 
                     }}
@@ -1705,7 +1705,7 @@ export default function Index({ params }: any) {
                 <button
                   onClick={() => {
                     router.push(
-                      "/" + params.lang + "/" + params.chain + "/buy-novart"
+                      "/" + params.lang + "/" + params.chain + "/buy-trump"
                     );
                   }}
                   className=" w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"

@@ -1606,7 +1606,7 @@ export default function Index({ params }: any) {
                                       className="text-sm bg-blue-500 text-white px-2 py-1 rounded-md hover:bg-blue-600"
                                       onClick={() => {
 
-                                        window.open(`https://wallet.novarwa.io/${params.lang}/sell-novart/${item._id}`, '_blank');
+                                        window.open(`https://wallet.novarwa.io/${params.lang}/sell-trump/${item._id}`, '_blank');
 
                                       }}
                                     >
@@ -1758,11 +1758,11 @@ export default function Index({ params }: any) {
                                       className="ml-5 text-sm bg-blue-500 text-white px-2 py-1 rounded-md hover:bg-blue-600"
                                       onClick={() => {
 
-                                        //window.open(`https://wallet.novarwa.io/${params.lang}/${params.chain}/sell-novart/${item._id}`, '_blank');
+                                        //window.open(`https://wallet.novarwa.io/${params.lang}/${params.chain}/sell-trump/${item._id}`, '_blank');
 
                                         // copy to clipboard
 
-                                        navigator.clipboard.writeText(`https://wallet.novarwa.io/${params.lang}/${params.chain}/sell-novart/${item._id}`);
+                                        navigator.clipboard.writeText(`https://wallet.novarwa.io/${params.lang}/${params.chain}/sell-trump/${item._id}`);
 
                                         toast.success('Link copied to clipboard');
 
@@ -1970,7 +1970,7 @@ export default function Index({ params }: any) {
                                         //closeModal();
                                         ///goChat(item._id, item.tradeId);
 
-                                        router.push(`/${params.lang}/${params.chain}/sell-novart/${item._id}`);
+                                        router.push(`/${params.lang}/${params.chain}/sell-trump/${item._id}`);
 
                                     }}
                                   >

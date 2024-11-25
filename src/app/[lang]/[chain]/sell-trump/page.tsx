@@ -3693,7 +3693,7 @@ export default function Index({ params }: any) {
                                     <span>{Seller}: {item.nickname}</span>
                                     <span className="text-green-500">:{Me}</span>
                                     
-                                    {/* goto /sell-novart/:id */}
+                                    {/* goto /sell-trump/:id */}
                                     {/*
                                     <div
                                       className="text-sm
@@ -3701,7 +3701,7 @@ export default function Index({ params }: any) {
 
                                       onClick={() => {
                                         router.push(
-                                          "/" + params.lang + "/" + params.chain + `/sell-novart/${item._id}`);
+                                          "/" + params.lang + "/" + params.chain + `/sell-trump/${item._id}`);
                                       }}
                                     >
                                       {Go_Sell_TRUMP}
@@ -3801,7 +3801,7 @@ export default function Index({ params }: any) {
                                       onClick={() => {
                                         
 
-                                        router.push("/" + params.lang + "/" + params.chain + `/sell-novart/${item._id}`);
+                                        router.push("/" + params.lang + "/" + params.chain + `/sell-trump/${item._id}`);
 
                                       }}
                                     >
@@ -3846,10 +3846,10 @@ export default function Index({ params }: any) {
                                     className=" flex flex-row text-sm bg-blue-500 text-zinc-800 px-2 py-1 rounded-md"
                                     onClick={() => {
                                       
-                                      ////router.push(`/sell-novart/${item._id}`);
+                                      ////router.push(`/sell-trump/${item._id}`);
 
                                       // copy to clipboard
-                                      navigator.clipboard.writeText(`https://wallet.novarwa.io/${params.lang}/${params.chain}/sell-novart/${item._id}`);
+                                      navigator.clipboard.writeText(`https://wallet.novarwa.io/${params.lang}/${params.chain}/sell-trump/${item._id}`);
                                       toast.success('Link has been copied to clipboard');
 
                                     }}
