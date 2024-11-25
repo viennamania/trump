@@ -26,7 +26,9 @@ export async function POST(request: NextRequest) {
     buyerWalletAddress: buyerWalletAddress,
     buyerNickname: buyerNickname,
     buyerAvatar: buyerAvatar,
-    buyerMobile: buyerMobile,
+    
+    ///buyerMobile: buyerMobile ? buyerMobile : '',
+
     buyerMemo: buyerMemo,
     depositName: depositName,
     depositBankName: depositBankName,
@@ -40,16 +42,36 @@ export async function POST(request: NextRequest) {
   }
 
   
-
+  /*
   const {
-    mobile: mobile,
+    
+    ///mobile: mobile,
+
     seller: seller,
     buyer: buyer,
     tradeId: tradeId,
   } = result as UserProps;
+  */
+
+
+  ///const mobile = result?.mobile;
+
+  const seller = result?.seller;
+  const buyer = result?.buyer;
+  const tradeId = result?.tradeId;
 
 
   // if mobile number is not prefix with country code don't send sms
+
+  const mobile = '';
+
+
+
+
+
+
+
+
   if (!mobile.startsWith('+')) {
     return NextResponse.json({
       result,

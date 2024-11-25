@@ -310,11 +310,9 @@ export default function SendUsdt({ params }: any) {
         address: address,
       });
       if (!result) return;
-      if (token === "USDT") {
-        setBalance(Number(result) / 10 ** 6);
-      } else if (token === "TRUMP") {
-        setBalance(Number(result) / 10 ** 18);
-      }
+
+      setBalance(Number(result) / 10 ** 18);
+      
 
     };
     getBalance();
@@ -692,12 +690,9 @@ export default function SendUsdt({ params }: any) {
             address: address || "",
           });
 
-          //console.log(result);
-          if (token === "USDT") {
-            setBalance( Number(result) / 10 ** 6 );
-          } else if (token === "TRUMP") {
-            setBalance( Number(result) / 10 ** 18 );
-          }
+
+          setBalance( Number(result) / 10 ** 18 );
+          
 
 
         } else {

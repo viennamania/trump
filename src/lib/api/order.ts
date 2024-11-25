@@ -681,7 +681,7 @@ export async function acceptSellOrder(data: any) {
 
 
 
-  if (!data.orderId || !data.buyerWalletAddress || !data.buyerMobile) {
+  if (!data.orderId || !data.buyerWalletAddress ) {
     return null;
   }
 
@@ -732,7 +732,9 @@ export async function acceptSellOrder(data: any) {
         walletAddress: data.buyerWalletAddress,
         nickname: data.buyerNickname,
         avatar: data.buyerAvatar,
-        mobile: data.buyerMobile,
+        
+        ///mobile: data?.buyerMobile || '',
+
         memo: buyerMemo,
         depositName: depositName,
         depositBankName: depositBankName,
