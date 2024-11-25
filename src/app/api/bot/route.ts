@@ -82,6 +82,7 @@ bot.use(async (ctx, next) => {
 
 
 // Commands - Start, Play, Leaderboard, About, Help
+/*
 bot.command("start", async (ctx) => {
     
     //const userDocId = await registerUser(ctx.from?.id.toString() || "", ctx.from?.first_name || "", ctx.from?.last_name || "", ctx.from?.username || "");
@@ -95,6 +96,10 @@ bot.command("start", async (ctx) => {
         "parse_mode": "HTML"
     })
 });
+*/
+
+
+
 
 /*
 {
@@ -249,12 +254,14 @@ bot.on('message:text', async (ctx) => {
 
     //await ctx.reply('Hello!')
 
+    /*
     await ctx.reply("Hello!", {
         // `reply_parameters` specifies the actual reply feature.
         reply_parameters:{
                 message_id: ctx.msg.message_id
         },
     });
+    */
 
     ///await bot.api.sendMessage(441516803, "Hi!", {/* more options */});
     /*
@@ -267,15 +274,17 @@ bot.on('message:text', async (ctx) => {
     );
     */
 
-
+    /*
     await bot.api.sendMessage(
         ctx.message.chat.id,
 
-        '<b>Hi!</b> <i>Welcome</i> to <a href="https://gold.goodtether.com">GoodTether</a>.',
+        '<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app">Trump Wallet</a>.',
 
         { parse_mode: "HTML" },
     );
+    */
 
+    /*
     await bot.api.sendMessage(
         ctx.message.chat.id,
         'https://gold.goodtether.com',
@@ -283,6 +292,7 @@ bot.on('message:text', async (ctx) => {
             parse_mode: "HTML",
         },
     );
+    */
 
 
 
@@ -294,10 +304,29 @@ bot.on('message:text', async (ctx) => {
         // image
         // url: https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/RiMb8wi-jNIcD6NZIkNZDiCTEwU5C5SIZHFpAu.png
 
+        /*
         const photo = 'https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/RiMb8wi-jNIcD6NZIkNZDiCTEwU5C5SIZHFpAu.png'
         await ctx.replyWithPhoto(photo, {
             caption: 'This is a photo!'
         })
+        */
+
+        // https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/mZDMLhJ-7L5OvMoRbJ5PG0vXF3BuywMffvxGT2.png
+        const photo = 'https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/mZDMLhJ-7L5OvMoRbJ5PG0vXF3BuywMffvxGT2.png'
+
+        await ctx.replyWithPhoto(photo, {
+            caption: 'Welcome to Trump Wallet!'
+        })
+
+
+        await bot.api.sendMessage(
+            ctx.message.chat.id,
+    
+            '<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app">Trump Wallet</a>.',
+    
+            { parse_mode: "HTML" },
+        );
+
 
         return
 
