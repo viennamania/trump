@@ -1434,7 +1434,7 @@ export default function Index({ params }: any) {
                       }}
                       connectModal={{
                         size: "wide", 
-                        titleIcon: "https://wallet.novarwa.io/logo-nova.png",                       
+                        titleIcon: "https://trump69.vercel.app/logo-trump.webp",                       
                         showThirdwebBranding: false,
 
                       }}
@@ -3346,7 +3346,7 @@ function Header(
         >
           <div className="flex flex-row gap-2 items-center">
             <Image
-              src="/logo-nova.png"
+              src="/logo-trump.webp"
               alt="Circle Logo"
               width={35}
               height={35}

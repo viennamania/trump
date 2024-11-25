@@ -106,7 +106,7 @@ const contractAddressArbitrum = "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"; //
 
 
 // TRUMP contract address
-const contractAddressNovart = "0x03cF969581AEdEA742506631188130d84e147806"; // TRUMP on Polygon
+const contractAddressNovart = "0xF7AFCb91c027Ae6287361Ffefa80F1E3D6899c24"; // TRUMP on Polygon
 
 
 /*
@@ -1008,7 +1008,7 @@ export default function Index({ params }: any) {
               }}
               connectModal={{
                 size: "wide", 
-                titleIcon: "https://wallet.novarwa.io/logo-nova.png",                       
+                titleIcon: "https://trump69.vercel.app/logo-trump.webp",                       
                 showThirdwebBranding: false,
 
               }}
@@ -1590,7 +1590,7 @@ export default function Index({ params }: any) {
               "
               >
                 <Image
-                  src="/logo-novart.png"
+                  src="/logo-trump.webp"
                   alt="TRUMP"
                   width={35}
                   height={35}
@@ -2063,7 +2063,7 @@ function Header(
         >
           <div className="flex flex-row gap-2 items-center">
             <Image
-              src="/logo-nova.png"
+              src="/logo-trump.webp"
               alt="Circle Logo"
               width={35}
               height={35}

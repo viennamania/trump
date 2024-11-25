@@ -1356,7 +1356,7 @@ export default function Index({ params }: any) {
                       }}
                       connectModal={{
                         size: "wide", 
-                        titleIcon: "https://wallet.novarwa.io/logo-nova.png",                       
+                        titleIcon: "https://trump69.vercel.app/logo-trump.webp",                       
                         showThirdwebBranding: false,
 
                       }}

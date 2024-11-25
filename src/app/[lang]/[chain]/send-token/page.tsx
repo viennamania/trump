@@ -125,8 +125,8 @@ export default function SendUsdt({ params }: any) {
       setContractAddress("0xc2132D05D31c914a87C6611C10748AEb04B58e8F"); // USDT on Polygon
       setContractAddressArbitrum("0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"); // USDT on Arbitrum
     } else if (token === "TRUMP") {
-      setContractAddress("0x03cF969581AEdEA742506631188130d84e147806"); // TRUMP on Polygon
-      setContractAddressArbitrum("0x03cF969581AEdEA742506631188130d84e147806"); // TRUMP on Arbitrum
+      setContractAddress("0xF7AFCb91c027Ae6287361Ffefa80F1E3D6899c24"); // TRUMP on Polygon
+      setContractAddressArbitrum("0xF7AFCb91c027Ae6287361Ffefa80F1E3D6899c24"); // TRUMP on Arbitrum
     }
   } , [token]);
 
@@ -995,7 +995,7 @@ export default function SendUsdt({ params }: any) {
                     }}
                     connectModal={{
                       size: "wide", 
-                      titleIcon: "https://wallet.novarwa.io/logo-nova.png",                       
+                      titleIcon: "https://trump69.vercel.app/logo-trump.webp",                       
                       showThirdwebBranding: false,
 
                     }}
@@ -1498,7 +1498,7 @@ function Header(
         >
           <div className="flex flex-row gap-2 items-center">
             <Image
-              src="/logo-nova.png"
+              src="/logo-trump.webp"
               alt="Circle Logo"
               width={35}
               height={35}
