@@ -113,15 +113,16 @@ bot.command("start", async (ctx) => {
 */
 
 
-bot.command("play", async (ctx) => {
+bot.command("start", async (ctx) => {
 
     //const userDocId = await registerUser(ctx.from?.id.toString() || "", ctx.from?.first_name || "", ctx.from?.last_name || "", ctx.from?.username || "");
     //console.log("User doc id:", userDocId);
     
-    const keyboard = new InlineKeyboard().game("Play now!")
-        .row()
-        .text("Leaderboard", "leaderboard")
-        .text("About", "about");
+    const keyboard = new InlineKeyboard().game("시작하기")
+        //.row()
+
+        //.text("Leaderboard", "leaderboard")
+        //.text("About", "about");
 
     
     ctx.replyWithGame("twosome", {
@@ -163,7 +164,10 @@ bot.on("callback_query:game_short_name", async (ctx) => {
 
     const token = "1234567890";
 
-    await ctx.answerCallbackQuery({ url: `https://preview.codecanyon.net/item/coin-flip-land-html5/full_screen_preview/55506571?_ga=2.230819288.636301431.1732326489-1387678474.1732326489/?token=${token}` });
+    //await ctx.answerCallbackQuery({ url: `https://preview.codecanyon.net/item/coin-flip-land-html5/full_screen_preview/55506571?_ga=2.230819288.636301431.1732326489-1387678474.1732326489/?token=${token}` });
+
+
+    await ctx.answerCallbackQuery({ url: `https://trump69.vercel.app/?token=${token}` });
 
 });
 
@@ -178,7 +182,7 @@ bot.catch((err) => console.error(err));
 
 
 
-
+/*
 bot.command("start", async (ctx) => {
     // You can get the chat identifier of the user to send your game to with `ctx.from.id`.
     // which gives you the chat identifier of the user who invoked the start command.
@@ -199,6 +203,7 @@ bot.command("start", async (ctx) => {
     });
 
 });
+*/
 
 
 
@@ -295,8 +300,8 @@ bot.on('message:text', async (ctx) => {
     */
 
 
-
-    if (ctx.message.text === '/start') {
+    
+    if (ctx.message.text === '/aaa') {
 
 
         //await ctx.reply('Hello!')
@@ -304,12 +309,6 @@ bot.on('message:text', async (ctx) => {
         // image
         // url: https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/RiMb8wi-jNIcD6NZIkNZDiCTEwU5C5SIZHFpAu.png
 
-        /*
-        const photo = 'https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/RiMb8wi-jNIcD6NZIkNZDiCTEwU5C5SIZHFpAu.png'
-        await ctx.replyWithPhoto(photo, {
-            caption: 'This is a photo!'
-        })
-        */
 
         // https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/mZDMLhJ-7L5OvMoRbJ5PG0vXF3BuywMffvxGT2.png
         const photo = 'https://vzrcy5vcsuuocnf3.public.blob.vercel-storage.com/mZDMLhJ-7L5OvMoRbJ5PG0vXF3BuywMffvxGT2.png'
