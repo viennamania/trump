@@ -118,7 +118,11 @@ bot.command("play", async (ctx) => {
     //const userDocId = await registerUser(ctx.from?.id.toString() || "", ctx.from?.first_name || "", ctx.from?.last_name || "", ctx.from?.username || "");
     //console.log("User doc id:", userDocId);
     
-    const keyboard = new InlineKeyboard().game("TRUMP 판매하기")
+    const keyboard = new InlineKeyboard()
+        .game("TRUMP 판매하기")
+        .game("TRUMP 구매하기")
+
+
         .row()
 
         //.text("Leaderboard", "leaderboard")
@@ -132,6 +136,8 @@ bot.command("play", async (ctx) => {
         protect_content: true,
         disable_notification: true
     });
+
+    
 
 
 
