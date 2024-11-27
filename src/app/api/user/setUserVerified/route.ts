@@ -13,11 +13,19 @@ export async function POST(request: NextRequest) {
   const { walletAddress, nickname, userType, telegramId, mobile, email } = body;
 
 
+  if (!walletAddress || !nickname || !userType) {
+    return NextResponse.json({
+      message: 'missing required fields',
+    }, {
+      status: 400,
+    });
+  }
+
 
   const result = await insertOneVerified({
     walletAddress: walletAddress,
     nickname: nickname,
-    usertype: userType,
+    userType: userType,
     telegramId: telegramId,
     mobile: mobile,
     email: email,

@@ -295,38 +295,6 @@ export default function SettingsPage({ params }: any) {
 
     const address = activeAccount?.address;
   
-  
-      
-    console.log("address", address);
- 
-
-    /*
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [emailAddress, setEmailAddress] = useState("");
-
-    
-    useEffect(() => {
-  
-  
-      if (address) {
-  
-        //const phoneNumber = await getUserPhoneNumber({ client });
-        //setPhoneNumber(phoneNumber);
-  
-  
-        getUserPhoneNumber({ client }).then((phoneNumber) => {
-          setPhoneNumber(phoneNumber || "");
-        });
-  
-        getUserEmail({ client }).then((emailAddress) => {
-          setEmailAddress(emailAddress || "");
-        });
-  
-  
-      }
-  
-    } , [address]);
-     */
 
 
 
@@ -363,14 +331,7 @@ export default function SettingsPage({ params }: any) {
     
         address && fetchData();
     
-      }, [address]);
-
-
-
-
-
-
-
+    }, [address]);
 
 
 

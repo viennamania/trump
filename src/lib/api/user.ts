@@ -171,11 +171,15 @@ export async function insertOne(data: any) {
 
 export async function insertOneVerified(data: any) {
 
-  //console.log('insertOne data: ' + JSON.stringify(data));
 
-  if (!data.walletAddress || !data.nickname) {
+
+  ///console.log('insertOneVerified data: ' + JSON.stringify(data));
+
+
+  if (!data.walletAddress || !data.nickname || !data.userType) {
     return null;
   }
+
 
 
   const client = await clientPromise;
