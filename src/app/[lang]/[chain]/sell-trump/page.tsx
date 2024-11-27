@@ -862,7 +862,7 @@ export default function Index({ params }: any) {
     
     const [sellOrders, setSellOrders] = useState<SellOrder[]>([]);
 
-    const [searchMyOrders, setSearchMyOrders] = useState(false);
+    const [searchMyOrders, setSearchMyOrders] = useState(true);
 
 
     const [loadingFetchSellOrders, setLoadingFetchSellOrders] = useState(false);
@@ -2812,6 +2812,7 @@ export default function Index({ params }: any) {
                     
 
                     {/* checkbox for search my trades */}
+                    {/*
                     <div className="flex flex-row items-center gap-2">
                       <input
                         disabled={!address}
@@ -2824,6 +2825,7 @@ export default function Index({ params }: any) {
                         {Search_my_trades}
                       </label>
                     </div>
+                    */}
 
                     {/* select table view or card view */}
                     <div className="flex flex-row items-center space-x-4">
