@@ -120,7 +120,7 @@ bot.command("play", async (ctx) => {
     
     const keyboard = new InlineKeyboard()
         ///.game("TRUMP 판매하기")
-        .game("TRUMP 구매하기")
+        .game("TRUMP 판매하기")
 
 
         .row()
