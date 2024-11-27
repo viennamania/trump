@@ -79,8 +79,8 @@ interface SellOrder {
   limit: string;
   paymentMethods: string[];
 
-  usdtAmount: number;
-  krwAmount: number;
+  trumpAmount: number;
+  fietAmount: number;
   rate: number;
 
   walletAddress: string;
@@ -120,11 +120,10 @@ const wallets = [
 
 
 
-const contractAddress = "0xF7AFCb91c027Ae6287361Ffefa80F1E3D6899c24"; // TRUMP on Polygon
+// TRUMP contract address
+const contractAddressTrump = "0xF7AFCb91c027Ae6287361Ffefa80F1E3D6899c24"; // TRUMP on Polygon
 
 const contractAddressArbitrum = "0xF7AFCb91c027Ae6287361Ffefa80F1E3D6899c24"; // TRUMP on Arbitrum
-
-
 
 
 
@@ -180,7 +179,7 @@ export default function Index({ params }: any) {
       // the contract's address
       ///address: contractAddress,
   
-      address: params.chain === "arbitrum" ? contractAddressArbitrum : contractAddress,
+      address: params.chain === "arbitrum" ? contractAddressArbitrum : contractAddressTrump,
   
   
       // OPTIONAL: the contract's abi
@@ -422,11 +421,8 @@ export default function Index({ params }: any) {
 
 
 
-    // for test
-    const [balance, setBalance] = useState(1000);
 
 
-    /* for test
      const [balance, setBalance] = useState(0);
 
     useEffect(() => {
@@ -444,7 +440,7 @@ export default function Index({ params }: any) {
     
         //console.log(result);
     
-        setBalance( Number(result) / 10 ** 6 );
+        setBalance( Number(result) / 10 ** 18 );
   
       };
   
@@ -457,7 +453,7 @@ export default function Index({ params }: any) {
       return () => clearInterval(interval);
   
     } , [address, contract]);
-     */
+     
 
 
 
@@ -511,7 +507,7 @@ export default function Index({ params }: any) {
       setLoadingOneSellOrder(true);
 
       // api call
-      const response = await fetch('/api/order/getOneSellOrder', {
+      const response = await fetch('/api/orderTrump/getOneSellOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -534,6 +530,9 @@ export default function Index({ params }: any) {
     };
 
 
+
+
+
     useEffect(() => {
 
         if (!orderId) {
@@ -547,7 +546,7 @@ export default function Index({ params }: any) {
 
 
           // api call
-          const response = await fetch('/api/order/getOneSellOrder', {
+          const response = await fetch('/api/orderTrump/getOneSellOrder', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -559,7 +558,8 @@ export default function Index({ params }: any) {
     
           const data = await response.json();
     
-          //console.log('data', data);
+          console.log('data', data);
+
     
           if (data.result) {
             setSellOrders(data.result.orders);
@@ -740,13 +740,13 @@ export default function Index({ params }: any) {
 
 
 
-    const [usdtAmount, setUsdtAmount] = useState(0);
+    const [trumpAmount, setTrumpAmount] = useState(0);
 
     const [defaultKrWAmount, setDefaultKrwAmount] = useState(0);
 
-    const [krwAmount, setKrwAmount] = useState(0);
+    const [fietAmount, setFietAmount] = useState(0);
 
-    console.log('usdtAmount', usdtAmount);
+    console.log('trumpAmount', trumpAmount);
 
 
 
@@ -757,22 +757,22 @@ export default function Index({ params }: any) {
 
     useEffect(() => {
 
-      if (usdtAmount === 0) {
+      if (trumpAmount === 0) {
 
         setDefaultKrwAmount(0);
 
-        setKrwAmount(0);
+        setFietAmount(0);
 
         return;
       }
     
         
-      setDefaultKrwAmount( Math.round(usdtAmount * rate) );
+      setDefaultKrwAmount( Math.round(trumpAmount * rate) );
 
 
-      setKrwAmount( Math.round(usdtAmount * rate) );
+      setFietAmount( Math.round(trumpAmount * rate) );
 
-    } , [usdtAmount, rate]);
+    } , [trumpAmount, rate]);
 
 
 
@@ -833,7 +833,7 @@ export default function Index({ params }: any) {
         );
 
 
-        fetch('/api/order/acceptSellOrder', {
+        fetch('/api/orderTrump/acceptSellOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -861,7 +861,7 @@ export default function Index({ params }: any) {
 
             setLoadingOneSellOrder(true);
 
-            fetch('/api/order/getOneSellOrder', {
+            fetch('/api/orderTrump/getOneSellOrder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1008,7 +1008,7 @@ export default function Index({ params }: any) {
 
 
         
-          const response = await fetch('/api/order/requestPayment', {
+          const response = await fetch('/api/orderTrump/requestPayment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -1023,7 +1023,7 @@ export default function Index({ params }: any) {
 
           const data = await response.json();
 
-          console.log('/api/order/requestPayment data====', data);
+          console.log('/api/orderTrump/requestPayment data====', data);
 
 
           /*
@@ -1043,7 +1043,7 @@ export default function Index({ params }: any) {
 
             setLoadingOneSellOrder(true);
 
-            const response = await fetch('/api/order/getOneSellOrder', {
+            const response = await fetch('/api/orderTrump/getOneSellOrder', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -1073,7 +1073,7 @@ export default function Index({ params }: any) {
 
             //console.log(result);
 
-            setBalance( Number(result) / 10 ** 6 );
+            setBalance( Number(result) / 10 ** 18 );
 
 
             toast.success('Payment request has been sent');
@@ -1127,15 +1127,15 @@ export default function Index({ params }: any) {
 
       setSellOrdering(true);
 
-      const response = await fetch('/api/order/setSellOrder', {
+      const response = await fetch('/api/orderTrump/setSellOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           walletAddress: address,
-          usdtAmount: usdtAmount,
-          krwAmount: krwAmount,
+          trumpAmount: trumpAmount,
+          fietAmount: fietAmount,
           rate: rate,
           privateSale: privateSale,
         })
@@ -1148,12 +1148,12 @@ export default function Index({ params }: any) {
       if (data.result) {
         toast.success('Sell order has been created');
 
-        setUsdtAmount(0);
+        setTrumpAmount(0);
         setprivateSale(false);
      
 
 
-        await fetch('/api/order/getOneSellOrder', {
+        await fetch('/api/orderTrump/getOneSellOrder', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -1238,7 +1238,7 @@ export default function Index({ params }: any) {
 
 
 
-    const response = await fetch('/api/order/confirmPayment', {
+    const response = await fetch('/api/orderTrump/confirmPayment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -1256,7 +1256,7 @@ export default function Index({ params }: any) {
 
     if (data.result) {
 
-      const response = await fetch('/api/order/getOneSellOrder', {
+      const response = await fetch('/api/orderTrump/getOneSellOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -1418,7 +1418,7 @@ export default function Index({ params }: any) {
 
                       <div className=" flex flex-col gap-2 items-start">
                         <div className="text-5xl font-semibold text-zinc-800">
-                          {Number(balance).toFixed(2)} <span className="text-lg">NOVA</span>
+                          {Number(balance).toFixed(2)} <span className="text-lg">TRUMP</span>
                         </div>
                       </div>
 
@@ -1885,7 +1885,7 @@ export default function Index({ params }: any) {
                                   {Price}: {
                                     // currency
                                   
-                                    Number(item.krwAmount).toLocaleString('ko-KR', {
+                                    Number(item.fietAmount).toLocaleString('ko-KR', {
                                       style: 'currency',
                                       currency: 'KRW',
                                     })
@@ -1898,11 +1898,11 @@ export default function Index({ params }: any) {
 
 
                                   <p className="text-lg font-semibold text-zinc-400
-                                  ">{item.usdtAmount} USDT</p>
+                                  ">{item.trumpAmount} USDT</p>
                                   <p className="text-lg font-semibold text-zinc-400
                                   ">{Rate}: {
 
-                                    Number(item.krwAmount / item.usdtAmount).toFixed(2)
+                                    Number(item.fietAmount / item.trumpAmount).toFixed(2)
 
                                   }</p>
                                 </div>
@@ -1966,7 +1966,7 @@ export default function Index({ params }: any) {
 
                                     <span>
                                       {Waiting_for_seller_to_deposit}
-                                      {' '}{item.usdtAmount} USDT
+                                      {' '}{item.trumpAmount} USDT
                                       {' '}{to_escrow}....
                                     </span>
 
@@ -2000,7 +2000,7 @@ export default function Index({ params }: any) {
                                           className="animate-spin"
                                       />
                                       <div className="text-lg font-semibold text-zinc-800">
-                                        Escrowing {item.usdtAmount} USDT...
+                                        Escrowing {item.trumpAmount} USDT...
                                       </div>
                                     </div>
 
@@ -2011,7 +2011,7 @@ export default function Index({ params }: any) {
 
                                 {escrowing[index] === false && requestingPayment[index] === true && (
                                   <div className="flex flex-col gpa-2">
-                                    {Escrow} {item.usdtAmount} USDT to the smart contract has been completed.
+                                    {Escrow} {item.trumpAmount} USDT to the smart contract has been completed.
                                   </div>
                                 )}
 
@@ -2044,7 +2044,7 @@ export default function Index({ params }: any) {
 
                                   <div className="text-sm text-zinc-400">
                                     {/*
-                                    If you request payment, the {item.usdtAmount} USDT will be escrowed to the smart contract and then the buyer ( {item.buyer.nickname} ) will be requested to pay.
+                                    If you request payment, the {item.trumpAmount} USDT will be escrowed to the smart contract and then the buyer ( {item.buyer.nickname} ) will be requested to pay.
                                     */}
 
                                     {If_you_request_payment}
@@ -2072,7 +2072,7 @@ export default function Index({ params }: any) {
                                     </div>
                                     <div className="text-sm text-zinc-400">
                                       {/*
-                                      I agree to escrow {item.usdtAmount} USDT to the smart contract and request payment to the buyer ( {item.buyer.nickname} )
+                                      I agree to escrow {item.trumpAmount} USDT to the smart contract and request payment to the buyer ( {item.buyer.nickname} )
                                       */}
 
                                         {I_agree_to_escrow_USDT}
@@ -2094,7 +2094,7 @@ export default function Index({ params }: any) {
                                     <li>
                                       {item.seller?.bankInfo.bankName} {item.seller?.bankInfo.accountNumber} {item.seller?.bankInfo.accountHolder}
                                     </li>
-                                    <li>{Deposit_Amount} : {item.krwAmount} KRW</li>
+                                    <li>{Deposit_Amount} : {item.fietAmount} KRW</li>
                                     <li>{Deposit_Name} : {
 
                                       item.buyer?.depositName ? item.buyer?.depositName : item.tradeId
@@ -2106,11 +2106,11 @@ export default function Index({ params }: any) {
 
                                 <button
                                     disabled={
-                                      balance < item.usdtAmount || requestingPayment[index] || escrowing[index]
+                                      balance < item.trumpAmount || requestingPayment[index] || escrowing[index]
                                       || !requestPaymentCheck[index]
                                     }
                                     className={`w-full text-lg
-                                      ${balance < item.usdtAmount ? 'bg-red-500' : 'bg-blue-500'}
+                                      ${balance < item.trumpAmount ? 'bg-red-500' : 'bg-blue-500'}
 
                                       ${requestPaymentCheck[index] ? 'bg-green-500' : 'bg-gray-500'}
                                       
@@ -2125,7 +2125,7 @@ export default function Index({ params }: any) {
                                           index,
                                           item._id,
                                           item.tradeId,
-                                          item.usdtAmount,
+                                          item.trumpAmount,
                                         );
 
                                     }}
@@ -2133,7 +2133,7 @@ export default function Index({ params }: any) {
 
 
 
-                                  {balance < item.usdtAmount ? (
+                                  {balance < item.trumpAmount ? (
 
                                     <div className="flex flex-col gap-2">
                                       <div className="flex flex-row items-center gap-2">
@@ -2147,13 +2147,13 @@ export default function Index({ params }: any) {
                                         Insufficient Balance
                                       </div>
                                       <div className="text-lg text-zinc-800">
-                                        You need {item.usdtAmount} USDT
+                                        You need {item.trumpAmount} USDT
                                       </div>
                                       <div className="text-lg text-zinc-800">
                                         You have {balance} USDT
                                       </div>
                                       <div className="text-lg text-zinc-800">
-                                        Please top up your balance by depositing {item.usdtAmount - balance} USDT
+                                        Please top up your balance by depositing {item.trumpAmount - balance} USDT
                                       </div>
                                       <div className="text-lg text-zinc-800">
                                         Your wallet address is
@@ -2299,7 +2299,7 @@ export default function Index({ params }: any) {
 
                                               }}
                                             >
-                                              {Buy} {item.usdtAmount} USDT
+                                              {Buy} {item.trumpAmount} USDT
                                             </button>
 
 
@@ -2340,7 +2340,7 @@ export default function Index({ params }: any) {
                                     />
 
                                     <div className="text-lg font-semibold text-green-500">
-                                      {Escrow}: {item.usdtAmount} USDT
+                                      {Escrow}: {item.trumpAmount} USDT
                                     </div>
 
                                     {/* polygon icon to go to polygon scan */}
@@ -2349,13 +2349,13 @@ export default function Index({ params }: any) {
                                       onClick={() => {
                                         {
                                           params.chain === 'polygon' ?
-                                          window.open(`https://polygonscan.com/token/${contractAddress}?a=${item.walletAddress}`, '_blank')
+                                          window.open(`https://polygonscan.com/token/${contractAddressTrump}?a=${item.walletAddress}`, '_blank')
 
                                           : params.chain === 'arbitrum' ?
 
                                           window.open(`https://explorer.arbitrum.io/token/${contractAddressArbitrum}?a=${item.walletAddress}`, '_blank')
 
-                                          : window.open(`https://polygonscan.com/token/${contractAddress}?a=${item.walletAddress}`, '_blank')
+                                          : window.open(`https://polygonscan.com/token/${contractAddressTrump}?a=${item.walletAddress}`, '_blank')
 
                                         }
                                       }}
@@ -2410,7 +2410,7 @@ export default function Index({ params }: any) {
                                         <div className="w-2 h-2 rounded-full bg-green-500"></div>
                                         <div className="text-sm">
                                           {Deposit_Amount}: {
-                                            item.krwAmount.toLocaleString('ko-KR', {
+                                            item.fietAmount.toLocaleString('ko-KR', {
                                               style: 'currency',
                                               currency: 'KRW'
                                             })
@@ -2489,7 +2489,7 @@ export default function Index({ params }: any) {
                                     />
 
                                     <span className="textlg text-zinc-800">
-                                      Escrow: {item.usdtAmount} USDT
+                                      Escrow: {item.trumpAmount} USDT
                                     </span>
 
                                     <button
@@ -2553,7 +2553,7 @@ export default function Index({ params }: any) {
                                     <div  className="flex w-2 h-2 rounded-full bg-green-500"></div>
 
                                     <div className="text-sm text-zinc-400">
-                                      If you confirm the payment, the escrowed {item.usdtAmount} USDT will be transferred to the buyer ( {item.buyer.nickname} ) wallet address.
+                                      If you confirm the payment, the escrowed {item.trumpAmount} USDT will be transferred to the buyer ( {item.buyer.nickname} ) wallet address.
                                     </div>
                                   </div>
                                   */}
@@ -2583,10 +2583,10 @@ export default function Index({ params }: any) {
                                     <span className="text-sm text-zinc-400">
                                       {/*
                                       I agree to check the bank transfer of {
-                                      item.krwAmount.toLocaleString('ko-KR', {
+                                      item.fietAmount.toLocaleString('ko-KR', {
                                         style: 'currency',
                                         currency: 'KRW',
-                                      })} from buyer ( {item.buyer.nickname} ) and transfer {item.usdtAmount} USDT to the buyer wallet address.
+                                      })} from buyer ( {item.buyer.nickname} ) and transfer {item.trumpAmount} USDT to the buyer wallet address.
                                       */}
 
 
@@ -2619,7 +2619,7 @@ export default function Index({ params }: any) {
                                     <div className="text-lg font-semibold text-zinc-800">
 
                                       {/*
-                                      Transfering {item.usdtAmount} USDT to the buyer ( {item.buyer.nickname} ) wallet address...
+                                      Transfering {item.trumpAmount} USDT to the buyer ( {item.buyer.nickname} ) wallet address...
                                       */}
                                       {Transfering_USDT_to_the_buyer_wallet_address}...
                                   
