@@ -327,7 +327,7 @@ bot.on('message:text', async (ctx) => {
     
             //`🚀 거래가 성사되었습니다! \n\n👤 구매자: ${buyer?.nickname} \n\n💼 입금 계좌: ${depositBankName} \n\n📝 입금자명: ${depositName} \n\n🔗 거래 확인: ${url}`
         
-            `🔗 구매하시려면 ${url}를 클릭하세요.`,
+            `🔗 구매하시려면 ${url} 를 클릭하세요.`,
 
 
             { parse_mode: "HTML" },
