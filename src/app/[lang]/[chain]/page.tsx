@@ -93,7 +93,10 @@ import App from "next/app";
 const wallets = [
   inAppWallet({
     auth: {
-      options: ["phone", "email"],
+      options: [
+        "phone",
+        "telegram",
+      ],
     },
   }),
 ];
