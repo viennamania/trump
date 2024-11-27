@@ -3613,43 +3613,55 @@ export default function Index({ params }: any) {
                             <div className="mt-4 flex flex-col items-start gap-2">
 
 
-                              <p className="text-2xl text-zinc-400">
-                                {Price}: 
-                                {
-                                  item.fietCurrency === 'KRW' ? (
-                                    Number(item.fietAmount).toLocaleString('ko-KR', {
-                                      style: 'currency',
-                                      currency: 'KRW',
-                                    })
-                                  ) : item.fietCurrency === 'USD' ? (
-                                    Number(item.fietAmount).toLocaleString('en-US', {
-                                      style: 'currency',
-                                      currency: 'USD',
-                                    })
-                                  ) : item.fietCurrency === 'JPY' ? (
-                                    Number(item.fietAmount).toLocaleString('ja-JP', {
-                                      style: 'currency',
-                                      currency: 'JPY',
-                                    })
-                                  ) : item.fietCurrency === 'CNY' ? (
-                                    Number(item.fietAmount).toLocaleString('en-US', {
-                                      style: 'currency',
-                                      currency: 'CNY',
-                                    })
-                                  ) : (
-                                    Number(item.fietAmount).toLocaleString('en-US', {
-                                      style: 'currency',
-                                      currency: 'USD',
-                                    })
-                                  )
-                                }
-                                
-                              </p>
 
 
-                              <div className="flex flex-row items-start gap-2">
 
-                                <p className="text-lg font-semibold text-white">{item.trumpAmount} TRUMP</p>
+                              <div className="flex flex-row items-start justify-center gap-2">
+
+                                <p className="text-5xl font-semibold text-yellow-500">
+                                  {item.trumpAmount}
+                                </p>
+                                <p className="text-sm text-zinc-400">
+                                  TRUMP
+                                </p>
+
+
+
+                              </div>
+
+
+                              <div className="flex flex-row items-center gap-2">
+                                <p className="text-2xl text-zinc-400">
+                                  {Price}: 
+                                  {
+                                    item.fietCurrency === 'KRW' ? (
+                                      Number(item.fietAmount).toLocaleString('ko-KR', {
+                                        style: 'currency',
+                                        currency: 'KRW',
+                                      })
+                                    ) : item.fietCurrency === 'USD' ? (
+                                      Number(item.fietAmount).toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD',
+                                      })
+                                    ) : item.fietCurrency === 'JPY' ? (
+                                      Number(item.fietAmount).toLocaleString('ja-JP', {
+                                        style: 'currency',
+                                        currency: 'JPY',
+                                      })
+                                    ) : item.fietCurrency === 'CNY' ? (
+                                      Number(item.fietAmount).toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'CNY',
+                                      })
+                                    ) : (
+                                      Number(item.fietAmount).toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD',
+                                      })
+                                    )
+                                  }
+                                </p>
 
                                 <p className="text-lg font-semibold text-white">{Rate}: {
 
@@ -3658,6 +3670,10 @@ export default function Index({ params }: any) {
                                 }</p>
 
                               </div>
+
+
+
+
 
                             </div>
 
@@ -3722,6 +3738,13 @@ export default function Index({ params }: any) {
                             )}
 
 
+                            {item?.buyer && (
+                              <div className="mt-4 flex flex-col gap-2 items-start">
+                                <p className="text-lg text-green-500 font-semibold">
+                                  {Buyer}: {item.buyer.nickname}
+                                </p>
+                              </div>
+                            )}
 
                        
 
@@ -3734,8 +3757,10 @@ export default function Index({ params }: any) {
                                 (item.status === 'accepted' || item.status === 'paymentRequested') ? (
 
                                   <div className="flex flex-row items-center gap-2">
+                                    {/*}
                                     <span>{Seller}: {item.nickname}</span>
                                     <span className="text-green-500">:{Me}</span>
+                                    */}
                                     
                                     {/* goto /sell-trump/:id */}
                                     {/*
@@ -3757,8 +3782,10 @@ export default function Index({ params }: any) {
                                 ) : (item.walletAddress === address && item.status === 'ordered') ? (
 
                                   <div className="flex flex-row items-center gap-2">
+                                    {/*
                                     <span>{Seller}: {item.nickname}</span>
                                     <span className="text-green-500">:{Me}</span>
+                                    */}
                                            
                                     <button
                                         disabled={cancellings[index]}
@@ -3766,6 +3793,7 @@ export default function Index({ params }: any) {
                                         onClick={() => {
                                           // api call
                                           // cancelSellOrder
+                                          
       
                                           cancelSellOrder(item._id, index);
       
