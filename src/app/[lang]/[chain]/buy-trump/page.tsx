@@ -112,6 +112,7 @@ const wallets = [
   inAppWallet({
     auth: {
       options: [
+        "phone",
         "telegram",
       ],
     },
