@@ -118,11 +118,13 @@ bot.command("play", async (ctx) => {
     //const userDocId = await registerUser(ctx.from?.id.toString() || "", ctx.from?.first_name || "", ctx.from?.last_name || "", ctx.from?.username || "");
     //console.log("User doc id:", userDocId);
     
-    const keyboard = new InlineKeyboard().game("TRUMP 구매하기")
-        //.row()
+    const keyboard = new InlineKeyboard().game("TRUMP 판매하기")
+        .row()
 
         //.text("Leaderboard", "leaderboard")
         //.text("About", "about");
+
+        .text("판매자설정", "seller")
 
     
     ctx.replyWithGame("twosome", {
@@ -147,6 +149,8 @@ bot.command("help", (ctx) => {
     <p>Get in touch with the game support team.</p>
   `, { parse_mode: "HTML" })
 });
+
+
 bot.on("callback_query:data", async (ctx) => {
     const data = ctx.callbackQuery.data;
     if (data === "leaderboard") {
@@ -154,20 +158,52 @@ bot.on("callback_query:data", async (ctx) => {
     } else if (data === "about") {
         ctx.reply("About!!! \nThis is a game bot");
     }
+
+    else if (data === "seller") {
+
+        
+        //ctx.reply("판매자 설정");
+        // open the game in the browser
+
+        
+        //const token = createToken(ctx.from.id.toString());
+
+        //console.log("Token: " + token);
+
+    
+
+
+    }
 });
 
+
 bot.on("callback_query:game_short_name", async (ctx) => {
+
+    if (ctx.callbackQuery.game_short_name === "twosome") {
+
     
-    //const token = createToken(ctx.from.id.toString());
+        //const token = createToken(ctx.from.id.toString());
 
-    //console.log("Token: " + token);
+        //console.log("Token: " + token);
 
-    const token = "1234567890";
+        const token = "1234567890";
 
-    //await ctx.answerCallbackQuery({ url: `https://preview.codecanyon.net/item/coin-flip-land-html5/full_screen_preview/55506571?_ga=2.230819288.636301431.1732326489-1387678474.1732326489/?token=${token}` });
+        //await ctx.answerCallbackQuery({ url: `https://preview.codecanyon.net/item/coin-flip-land-html5/full_screen_preview/55506571?_ga=2.230819288.636301431.1732326489-1387678474.1732326489/?token=${token}` });
 
 
-    await ctx.answerCallbackQuery({ url: `https://trump69.vercel.app/kr/polygon/buy-trump?token=${token}` });
+        await ctx.answerCallbackQuery({ url: `https://trump69.vercel.app/kr/polygon/buy-trump?token=${token}` });
+
+    } else if (ctx.callbackQuery.game_short_name === "selltrump") {
+
+        //const token = createToken(ctx.from.id.toString());
+
+        //console.log("Token: " + token);
+
+        const token = "1234567890";
+
+        await ctx.answerCallbackQuery({ url: `https://trump69.vercel.app/kr/polygon/sell-trump?token=${token}` });
+
+    }
 
 });
 
