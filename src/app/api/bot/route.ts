@@ -318,11 +318,18 @@ bot.on('message:text', async (ctx) => {
         })
 
 
+        const url = 'https://trump69.vercel.app/kr/polygon/buy-trump'
+
         await bot.api.sendMessage(
             ctx.message.chat.id,
     
-            '<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app/kr/polygon/buy-trump">TRUMP 구매하기</a>.',
+            //'<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app/kr/polygon/buy-trump">TRUMP 구매하기</a>.',
     
+            //`🚀 거래가 성사되었습니다! \n\n👤 구매자: ${buyer?.nickname} \n\n💼 입금 계좌: ${depositBankName} \n\n📝 입금자명: ${depositName} \n\n🔗 거래 확인: ${url}`
+        
+            `🔗 구매하시려면 ${url}를 클릭하세요.`,
+
+
             { parse_mode: "HTML" },
         );
 
