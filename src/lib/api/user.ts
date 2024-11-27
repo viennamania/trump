@@ -16,10 +16,12 @@ export interface UserProps {
   id: string,
   name: string,
   nickname: string,
+  userType: string,
   email: string,
   avatar: string,
   regType: string,
   mobile: string,
+  telegramId: string,
   gender: string,
   weight: number,
   height: number,
@@ -208,6 +210,8 @@ export async function insertOneVerified(data: any) {
       id: id,
       nickname: data.nickname,
 
+      userType: data.userType,
+      telegramId: data.telegramId,
       mobile: data.mobile,
       email: data.email,
 
@@ -229,6 +233,8 @@ export async function insertOneVerified(data: any) {
       id: id,
 
       nickname: data.nickname,
+      userType: data.userType,
+      telegramId: data.telegramId,
       mobile: data.mobile,
       email: data.email,
     };

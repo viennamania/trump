@@ -10,13 +10,15 @@ export async function POST(request: NextRequest) {
 
   const body = await request.json();
 
-  const { walletAddress, nickname, mobile, email } = body;
+  const { walletAddress, nickname, userType, telegramId, mobile, email } = body;
 
 
 
   const result = await insertOneVerified({
     walletAddress: walletAddress,
     nickname: nickname,
+    usertype: userType,
+    telegramId: telegramId,
     mobile: mobile,
     email: email,
   });

@@ -683,9 +683,6 @@ export async function acceptSellOrder(data: any) {
   
   ///console.log('acceptSellOrder data: ' + JSON.stringify(data));
 
-
-
-
   if (!data.orderId || !data.buyerWalletAddress) {
     return null;
   }
@@ -862,7 +859,6 @@ export async function requestPayment(data: any) {
 
 export async function confirmPayment(data: any) {
   
-  ///console.log('acceptSellOrder data: ' + JSON.stringify(data));
 
   if (!data.orderId) {
     return null;
@@ -1202,8 +1198,6 @@ export async function getOneByWalletAddress(
 
 export async function sellOrderRollbackPayment(data: any) {
   
-  ///console.log('acceptSellOrder data: ' + JSON.stringify(data));
-
   if (!data.orderId) {
     return null;
   }
@@ -1697,7 +1691,6 @@ export async function acceptBuyOrder(data: any) {
 
 export async function buyOrderRequestPayment(data: any) {
   
-  ///console.log('acceptSellOrder data: ' + JSON.stringify(data));
 
   if (!data.orderId) {
     return null;
@@ -1742,7 +1735,6 @@ export async function buyOrderRequestPayment(data: any) {
 
 export async function buyOrderConfirmPayment(data: any) {
   
-  ///console.log('acceptSellOrder data: ' + JSON.stringify(data));
 
   if (!data.orderId) {
     return null;
@@ -1790,7 +1782,6 @@ export async function buyOrderConfirmPayment(data: any) {
 
 export async function buyOrderRollbackPayment(data: any) {
   
-  ///console.log('acceptSellOrder data: ' + JSON.stringify(data));
 
   if (!data.orderId) {
     return null;

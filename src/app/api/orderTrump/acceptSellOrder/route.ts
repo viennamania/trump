@@ -5,9 +5,28 @@ import {
 	acceptSellOrder,
 } from '@lib/api/orderTrump';
 
+import {
+  getOneByWalletAddress,
+} from '@lib/api/user';
+
 // Download the helper library from https://www.twilio.com/docs/node/install
 import twilio from "twilio";
-import { idCounter } from "thirdweb/extensions/farcaster/idRegistry";
+
+///import { idCounter } from "thirdweb/extensions/farcaster/idRegistry";
+
+
+import {
+  Bot,
+  webhookCallback,
+  Context,
+  InlineKeyboard,
+} from 'grammy'
+
+
+const token = process.env.TELEGRAM_BOT_TOKEN as string
+
+const bot = new Bot(token)
+
 
 
 export async function POST(request: NextRequest) {
@@ -38,11 +57,55 @@ export async function POST(request: NextRequest) {
 
 
   const {
+    walletAddress: walletAddress,
     mobile: mobile,
     seller: seller,
     buyer: buyer,
     tradeId: tradeId,
   } = result as UserProps;
+
+
+
+  // get user from walletAddress
+  
+  const user = await getOneByWalletAddress(walletAddress);
+
+  console.log("user", user);
+
+  // sellet mobile or telegramId
+
+  const userType = user?.userType;
+
+  if (userType === 'telegram') {
+
+    const telegramId = user?.telegramId;
+
+    if (telegramId) {
+
+      // send telegram message
+
+      bot.api.sendMessage(
+        telegramId, 
+        `TID[${tradeId}] Your sell order has been accepted by ${buyer?.nickname}! You must escrow USDT to proceed with the trade in 10 minutes!`
+      );
+
+    }
+
+    /*
+        await bot.api.sendMessage(
+        ctx.message.chat.id,
+
+        '<b>Hi!</b> <i>Welcome</i> to <a href="https://trump69.vercel.app">Trump Wallet</a>.',
+
+        { parse_mode: "HTML" },
+    );
+    */
+
+
+
+  }
+
+
 
 
   // if mobile number is not prefix with country code don't send sms
