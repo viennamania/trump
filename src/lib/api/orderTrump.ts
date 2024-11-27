@@ -112,7 +112,7 @@ export async function updatePrice(data: any) {
     return null;
   }
 
-  console.log('updatePrice data.price: ' + data.price);
+  //console.log('updatePrice data.price: ' + data.price);
 
 
 
@@ -164,7 +164,7 @@ export async function updatePrice(data: any) {
 
 export async function insertSellOrder(data: any) {
 
-  console.log('insertSellOrder data: ' + JSON.stringify(data));
+  ///console.log('insertSellOrder data: ' + JSON.stringify(data));
   /*
   {"walletAddress":"0xc6F48f56C5Da5c674746C298A460A2E1427d0998","trumpAmount":10,"fietAmount":15,"fietCurrency":"USD","rate":1.5,"payment":{"method":"Bank"},"privateSale":false}
   */

@@ -1311,7 +1311,7 @@ export default function Index({ params }: any) {
 
           <AppBarComponent />
   
-          <div className="mt-4 w-full flex flex-row gap-5 justify-center mb-10">
+          <div className="w-full flex flex-row gap-5 justify-start mb-10">
               {/* history back */}
               {/* if you want to go back to the previous page */}
 
@@ -1319,7 +1319,8 @@ export default function Index({ params }: any) {
                   onClick={() =>
                       router.push('/' + params.lang + '/' + params.chain)
                   }
-                  className="text-zinc-100 font-semibold underline"
+                  className="text-zinc-800 font-semibold
+                  bg-zinc-100 px-4 py-2 rounded-md"
               >
                 {Go_Home}
               </button>
@@ -1417,7 +1418,7 @@ export default function Index({ params }: any) {
                     <div className='w-full flex flex-row items-between justify-start gap-5'>
 
                       <div className=" flex flex-col gap-2 items-start">
-                        <div className="text-5xl font-semibold text-zinc-800">
+                        <div className="text-xl font-semibold text-zinc-800">
                           {Number(balance).toFixed(2)} <span className="text-lg">TRUMP</span>
                         </div>
                       </div>

@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
   
   const user = await getOneByWalletAddress(walletAddress);
 
-  console.log("user", user);
+  ///console.log("user", user);
 
   // sellet mobile or telegramId
 
@@ -83,10 +83,13 @@ export async function POST(request: NextRequest) {
     if (telegramId) {
 
       // send telegram message
+      // https://trump69.vercel.app/kr/polygon/sell-trump/ + orderId
+
+      const url = `https://trump69.vercel.app/${lang}/${chain}/sell-trump/${orderId}`;
 
       bot.api.sendMessage(
         telegramId, 
-        `TID[${tradeId}] Your sell order has been accepted by ${buyer?.nickname}! You must escrow USDT to proceed with the trade in 10 minutes!`
+        `🚀 거래가 성사되었습니다! \n\n👤 구매자: ${buyer?.nickname} \n\n💼 입금 계좌: ${depositBankName} \n\n📝 입금자명: ${depositName} \n\n🔗 거래 확인: ${url}`
       );
 
     }
