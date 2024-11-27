@@ -122,7 +122,7 @@ interface BuyOrder {
 const wallets = [
   inAppWallet({
     auth: {
-      options: ["telegram"],
+      options: ["phone", "telegram"],
     },
   }),
 ];

@@ -120,7 +120,7 @@ interface SellOrder {
 const wallets = [
   inAppWallet({
     auth: {
-      options: ["telegram"],
+      options: ["phone", "telegram"],
     },
   }),
 ];
