@@ -119,7 +119,7 @@ bot.command("play", async (ctx) => {
     //console.log("User doc id:", userDocId);
     
     const keyboard = new InlineKeyboard()
-        .game("TRUMP 판매하기")
+        ///.game("TRUMP 판매하기")
         .game("TRUMP 구매하기")
 
 
@@ -130,14 +130,20 @@ bot.command("play", async (ctx) => {
 
         .text("판매자설정", "seller")
 
-    
+    /*
     ctx.replyWithGame("twosome", {
         reply_markup: keyboard,
         protect_content: true,
         disable_notification: true
     });
+    */
 
-    
+    ctx.replyWithGame("selltrump", {
+        reply_markup: keyboard,
+        protect_content: true,
+        disable_notification: true
+    });
+
 
 
 
